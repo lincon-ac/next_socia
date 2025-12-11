@@ -135,6 +135,18 @@ A SocIA possui uma persona humanizada e profissional:
 - ✅ Design premium com glassmorphism
 - ✅ Avatar da assistente virtual
 
+### Ações Rápidas (Quick Actions)
+
+![Quick Actions](DEMO-2.png)
+
+**Tópicos de conversação disponíveis:**
+- 💰 Como faço para me cadastrar no Bolsa Família?
+- 📅 Qual o calendário de pagamento do Bolsa Família?
+- 📋 Como consultar meu FGTS?
+- 📱 O que é o Caixa Tem?
+- 🏠 Como funciona o Minha Casa Minha Vida?
+- 🛡️ Como sacar o seguro desemprego?
+
 **Teste ao vivo:** [Acesse a demo](https://lincon-ac.github.io/next_socia)
 
 ---
