@@ -121,14 +121,21 @@ A SocIA possui uma persona humanizada e profissional:
 
 ## 🎬 Demonstração
 
-### Interface Inicial
-![Interface Inicial](docs/screenshots/initial-view.png)
+### Interface em Ação
 
-### Conversação em Andamento
-![Chat em Ação](docs/screenshots/chat-active.png)
+![SocIA Demo](DEMO.png)
 
-### Recursos de Voz
-![TTS/STT](docs/screenshots/voice-features.png)
+**Funcionalidades demonstradas:**
+- ✅ Interface estilo Caixa Econômica Federal
+- ✅ Mensagem de boas-vindas da SocIA
+- ✅ Pergunta do usuário: "Como consultar meu FGTS?"
+- ✅ Resposta detalhada e contextualizada
+- ✅ Botão "Ouvir" para reprodução em áudio (TTS)
+- ✅ Campo de input com ícone de microfone (STT)
+- ✅ Design premium com glassmorphism
+- ✅ Avatar da assistente virtual
+
+**Teste ao vivo:** [Acesse a demo](https://lincon-ac.github.io/next_socia)
 
 ---
 
