@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SocIA - Assistente Virtual da Caixa Econômica Federal">
+    <title>SocIA - Assistente da Caixa</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Header - Estilo Caixa App -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <img src="avatar.png" alt="SocIA" class="header-avatar">
+                <div class="header-text">
+                    <h1 class="app-title">SocIA</h1>
+                    <p class="app-subtitle">Assistente Virtual da Caixa</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="voice-toggle-btn" id="voiceToggleBtn" aria-label="Ativar/Desativar resposta em voz">
+                    <svg class="voice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="voice-status">Voz</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Chat Container -->
+    <main class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+            <!-- Mensagem inicial da SocIA -->
+            <div class="message-wrapper bot-message">
+                <img src="avatar.png" alt="SocIA" class="message-avatar">
+                <div class="message-bubble bot">
+                    <p>Estou aqui para te ajudar com informações sobre programas sociais do governo e serviços da Caixa
+                        Econômica Federal.</p>
+                    <p>Como posso te ajudar hoje?</p>
+                    <span class="message-time">Agora</span>
+                    <button class="listen-btn" onclick="speakMessage(this)" aria-label="Ouvir mensagem">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path
+                                d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Ouvir
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions - Novos Tópicos -->
+        <div class="quick-actions-container">
+            <p class="quick-actions-label">Escolha um tema ou digite sua pergunta</p>
+            <div class="quick-actions">
+                <button class="quick-action-btn" data-action="Como faço para me cadastrar no Bolsa Família?">
+                    <svg class="quick-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Como faço para me cadastrar no Bolsa Família?</span>
+                </button>
+                <button class="quick-action-btn" data-action="Qual o calendário de pagamento do Bolsa Família?">
+                    <svg class="quick-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Qual o calendário de pagamento do Bolsa Família?</span>
+                </button>
+                <button class="quick-action-btn" data-action="Como consultar meu FGTS?">
+                    <svg class="quick-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 3h18v18H3V3z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M8 8h8M8 12h8M8 16h4" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <span>Como consultar meu FGTS?</span>
+                </button>
+                <button class="quick-action-btn" data-action="O que é o Caixa Tem?">
+                    <svg class="quick-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>O que é o Caixa Tem?</span>
+                </button>
+                <button class="quick-action-btn" data-action="Como funciona o Minha Casa Minha Vida?">
+                    <svg class="quick-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M9 22V12h6v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Como funciona o Minha Casa Minha Vida?</span>
+                </button>
+                <button class="quick-action-btn" data-action="Como sacar o seguro desemprego?">
+                    <svg class="quick-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <span>Como sacar o seguro desemprego?</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Input Area - Estilo Caixa App -->
+        <div class="input-container">
+            <div class="input-wrapper">
+                <button class="mic-btn" id="micBtn" aria-label="Gravar mensagem por voz" title="Clique para falar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <input type="text" id="messageInput" class="message-input" placeholder="Digite sua pergunta..."
+                    aria-label="Campo de mensagem">
+                <button id="sendBtn" class="send-btn" aria-label="Enviar mensagem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+            <p class="input-footer">SocIA responde apenas sobre programas sociais e serviços da Caixa</p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

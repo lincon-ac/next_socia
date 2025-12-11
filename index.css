@@ -1,0 +1,532 @@
+/* ============================================
+   SocIA - Design Oficial Caixa App
+   Interface Similar aos Apps da Caixa
+   ============================================ */
+
+:root {
+    /* Cores Oficiais Caixa */
+    --caixa-blue-dark: #003D7A;
+    --caixa-blue-primary: #0066B3;
+    --caixa-orange: #F37021;
+    --caixa-orange-light: #FF8C42;
+
+    /* Cores Neutras */
+    --color-white: #FFFFFF;
+    --color-gray-50: #FAFAFA;
+    --color-gray-100: #F5F5F5;
+    --color-gray-200: #EEEEEE;
+    --color-gray-300: #E0E0E0;
+    --color-gray-400: #BDBDBD;
+    --color-gray-500: #9E9E9E;
+    --color-gray-600: #757575;
+    --color-gray-700: #616161;
+    --color-gray-800: #424242;
+    --color-gray-900: #212121;
+
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Border Radius - Caixa Style */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    /* Shadows - Caixa Style */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background: var(--color-gray-100);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ============================================
+   Header - Estilo Caixa App
+   ============================================ */
+.header {
+    background: linear-gradient(180deg, var(--caixa-blue-dark) 0%, var(--caixa-blue-primary) 100%);
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.header-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-white);
+    box-shadow: var(--shadow-sm);
+    object-fit: cover;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.app-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+.app-subtitle {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.voice-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.voice-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.voice-toggle-btn.active {
+    background: var(--caixa-orange);
+    border-color: var(--caixa-orange);
+}
+
+.voice-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.status-indicator {
+    display: none;
+}
+
+/* ============================================
+   Chat Container - Estilo Caixa App
+   ============================================ */
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--color-white);
+    overflow: hidden;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    background: var(--color-gray-50);
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+    border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   Mensagens - Estilo Caixa App
+   ============================================ */
+.message-wrapper {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-wrapper.bot-message {
+    flex-direction: row;
+}
+
+.message-wrapper.user-message {
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.user-message .message-avatar {
+    display: none;
+}
+
+.message-bubble {
+    max-width: 75%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+
+.message-bubble.bot {
+    background: var(--color-white);
+    color: var(--color-gray-900);
+    border: 1px solid var(--color-gray-200);
+}
+
+.message-bubble.user {
+    background: var(--caixa-blue-primary);
+    color: var(--color-white);
+}
+
+.message-bubble p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.9375rem;
+}
+
+.message-time {
+    display: block;
+    font-size: 0.6875rem;
+    margin-top: var(--spacing-xs);
+    opacity: 0.7;
+}
+
+.listen-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: var(--color-gray-100);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--caixa-blue-primary);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: var(--spacing-xs);
+    transition: all 0.2s;
+}
+
+.listen-btn:hover {
+    background: var(--color-gray-200);
+}
+
+.listen-btn svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* ============================================
+   Quick Actions - Estilo Caixa App
+   ============================================ */
+.quick-actions-container {
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-top: 1px solid var(--color-gray-200);
+}
+
+.quick-actions-label {
+    font-size: 0.8125rem;
+    color: var(--color-gray-600);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.quick-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    color: var(--caixa-blue-primary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.quick-action-btn:hover {
+    background: var(--color-gray-50);
+    border-color: var(--caixa-blue-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.quick-action-btn:active {
+    transform: translateY(0);
+}
+
+.quick-action-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--caixa-orange);
+}
+
+/* ============================================
+   Input Area - Estilo Caixa App
+   ============================================ */
+.input-container {
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-top: 1px solid var(--color-gray-200);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.input-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xs);
+    transition: all 0.2s;
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--caixa-blue-primary);
+    background: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(0, 102, 179, 0.1);
+}
+
+.mic-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.mic-btn:hover {
+    background: var(--color-gray-200);
+    color: var(--caixa-blue-primary);
+}
+
+.mic-btn.recording {
+    background: var(--caixa-orange);
+    color: var(--color-white);
+    animation: pulse-recording 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-recording {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.mic-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.message-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 0.9375rem;
+    color: var(--color-gray-900);
+    padding: var(--spacing-sm);
+    outline: none;
+}
+
+.message-input::placeholder {
+    color: var(--color-gray-500);
+}
+
+.send-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--caixa-blue-primary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.send-btn:hover {
+    background: var(--caixa-blue-dark);
+    transform: scale(1.05);
+}
+
+.send-btn:active {
+    transform: scale(0.95);
+}
+
+.send-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.input-footer {
+    text-align: center;
+    padding-top: var(--spacing-sm);
+    font-size: 0.6875rem;
+    color: var(--color-gray-500);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+    .header {
+        padding: var(--spacing-sm) var(--spacing-md) var(--spacing-lg);
+    }
+
+    .header-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .app-title {
+        font-size: 1.125rem;
+    }
+
+    .app-subtitle {
+        font-size: 0.8125rem;
+    }
+
+    .voice-toggle-btn span {
+        display: none;
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .message-bubble {
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+button:focus-visible {
+    outline: 2px solid var(--caixa-orange);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,374 @@
+openapi: 3.0.3
+info:
+  title: SocIA Chatbot API
+  description: |
+    API completa para o chatbot SocIA da Caixa Econômica Federal.
+    
+    Arquitetura de microsserviços com três módulos principais:
+    - **Chat API Gateway** (porta 3000): Ponto de entrada principal
+    - **NLP Processing Service** (porta 3001): Processamento de linguagem natural
+    - **Knowledge Base Service** (porta 3002): Base de conhecimento hierárquica
+    
+    ## Escopo
+    - Programas Sociais do Governo Federal
+    - Serviços da Caixa Econômica Federal
+    - Produtos da Caixa Econômica Federal
+  version: 1.0.0
+  contact:
+    name: SocIA Team
+    email: socia@caixa.gov.br
+
+servers:
+  - url: http://localhost:3000
+    description: Chat API Gateway (Development)
+  - url: http://localhost:3001
+    description: NLP Processing Service (Development)
+  - url: http://localhost:3002
+    description: Knowledge Base Service (Development)
+
+tags:
+  - name: Chat
+    description: Endpoints para interação com o chatbot
+  - name: NLP
+    description: Processamento de linguagem natural
+  - name: Knowledge Base
+    description: Base de conhecimento
+
+paths:
+  /api/chat/message:
+    post:
+      tags:
+        - Chat
+      summary: Processar mensagem do usuário
+      description: Endpoint principal para enviar mensagens e receber respostas do chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  description: Mensagem do usuário
+                  example: "Como consultar meu FGTS?"
+                sessionId:
+                  type: string
+                  description: ID da sessão (opcional)
+                  example: "session-123"
+                context:
+                  type: object
+                  description: Contexto adicional da conversa
+      responses:
+        '200':
+          description: Resposta processada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  response:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      type:
+                        type: string
+                        enum: [greeting, help, knowledge, default, out_of_scope]
+                      intent:
+                        type: string
+                      confidence:
+                        type: number
+                      timestamp:
+                        type: string
+                        format: date-time
+        '400':
+          description: Requisição inválida
+        '500':
+          description: Erro interno do servidor
+
+  /api/chat/greeting:
+    get:
+      tags:
+        - Chat
+      summary: Obter saudação inicial
+      description: Retorna a mensagem de saudação inicial da SocIA
+      responses:
+        '200':
+          description: Saudação retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  greeting:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      suggestions:
+                        type: array
+                        items:
+                          type: string
+                      timestamp:
+                        type: string
+                        format: date-time
+
+  /api/chat/suggestions:
+    get:
+      tags:
+        - Chat
+      summary: Obter sugestões de tópicos
+      description: Retorna sugestões de perguntas/tópicos para o usuário
+      responses:
+        '200':
+          description: Sugestões retornadas com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  suggestions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        query:
+                          type: string
+
+  /api/nlp/process:
+    post:
+      tags:
+        - NLP
+      summary: Processar intenção da mensagem
+      description: Extrai intenção, entidades e valida escopo da mensagem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                context:
+                  type: object
+      responses:
+        '200':
+          description: Processamento concluído
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  inScope:
+                    type: boolean
+                  intent:
+                    type: object
+                    properties:
+                      originalMessage:
+                        type: string
+                      intent:
+                        type: string
+                      category:
+                        type: string
+                      topic:
+                        type: string
+                      confidence:
+                        type: number
+                      entities:
+                        type: object
+                      knowledge:
+                        type: object
+
+  /api/nlp/validate-scope:
+    post:
+      tags:
+        - NLP
+      summary: Validar escopo da mensagem
+      description: Verifica se a mensagem está dentro do escopo da SocIA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+      responses:
+        '200':
+          description: Validação concluída
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      inScope:
+                        type: boolean
+                      response:
+                        type: string
+                        nullable: true
+
+  /api/knowledge/categories:
+    get:
+      tags:
+        - Knowledge Base
+      summary: Listar categorias
+      description: Retorna todas as categorias da base de conhecimento
+      responses:
+        '200':
+          description: Categorias retornadas com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        category:
+                          type: string
+                        description:
+                          type: string
+
+  /api/knowledge/search:
+    get:
+      tags:
+        - Knowledge Base
+      summary: Buscar na base de conhecimento
+      description: Busca por palavras-chave na base de conhecimento
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Termo de busca
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filtrar por categoria específica
+      responses:
+        '200':
+          description: Busca realizada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  query:
+                    type: string
+                  count:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+
+  /api/knowledge/topic/{category}/{topic}:
+    get:
+      tags:
+        - Knowledge Base
+      summary: Obter detalhes de um tópico
+      description: Retorna informações completas sobre um tópico específico
+      parameters:
+        - name: category
+          in: path
+          required: true
+          schema:
+            type: string
+          example: programas_sociais
+        - name: topic
+          in: path
+          required: true
+          schema:
+            type: string
+          example: fgts
+      responses:
+        '200':
+          description: Tópico encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+        '404':
+          description: Categoria ou tópico não encontrado
+
+  /api/knowledge/metadata:
+    get:
+      tags:
+        - Knowledge Base
+      summary: Obter metadados
+      description: Retorna metadados da base de conhecimento (versão, escopo, etc.)
+      responses:
+        '200':
+          description: Metadados retornados
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      version:
+                        type: string
+                      lastUpdated:
+                        type: string
+                      description:
+                        type: string
+                      scope:
+                        type: array
+                        items:
+                          type: string
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          example: "Error message"

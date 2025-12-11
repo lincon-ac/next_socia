@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # Chat API Gateway
+  chat-api:
+    build: ./chat-api
+    container_name: socia-chat-api
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NLP_SERVICE_URL=http://nlp-service:3001
+      - KNOWLEDGE_BASE_URL=http://knowledge-base:3002
+      - NODE_ENV=development
+    depends_on:
+      - nlp-service
+      - knowledge-base
+    volumes:
+      - ./chat-api:/app
+      - /app/node_modules
+    command: npm run dev
+    networks:
+      - socia-network
+    restart: unless-stopped
+
+  # NLP Processing Service
+  nlp-service:
+    build: ./nlp-service
+    container_name: socia-nlp-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - KNOWLEDGE_BASE_URL=http://knowledge-base:3002
+      - NODE_ENV=development
+    depends_on:
+      - knowledge-base
+    volumes:
+      - ./nlp-service:/app
+      - /app/node_modules
+    command: npm run dev
+    networks:
+      - socia-network
+    restart: unless-stopped
+
+  # Knowledge Base Service
+  knowledge-base:
+    build: ./knowledge-base
+    container_name: socia-knowledge-base
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - NODE_ENV=development
+    volumes:
+      - ./knowledge-base:/app
+      - /app/node_modules
+    command: npm run dev
+    networks:
+      - socia-network
+    restart: unless-stopped
+
+networks:
+  socia-network:
+    driver: bridge
+
+volumes:
+  node_modules:

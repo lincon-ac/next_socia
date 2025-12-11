@@ -1,0 +1,30 @@
+{
+    "name": "socia-chat-api",
+    "version": "1.0.0",
+    "description": "SocIA Chat API Gateway - Main API gateway orchestrating chat interactions",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "socia",
+        "chat-api",
+        "api-gateway",
+        "microservice"
+    ],
+    "author": "SocIA Team",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "axios": "^1.6.0",
+        "swagger-ui-express": "^5.0.0",
+        "yamljs": "^0.3.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
+    }
+}

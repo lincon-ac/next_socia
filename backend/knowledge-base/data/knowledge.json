@@ -1,0 +1,346 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-12-10",
+    "description": "Base de conhecimento hierárquica da SocIA - Programas Sociais e Serviços da Caixa",
+    "scope": [
+      "Programas Sociais do Governo Federal",
+      "Serviços da Caixa Econômica Federal",
+      "Produtos da Caixa Econômica Federal"
+    ]
+  },
+  "knowledge": {
+    "programas_sociais": {
+      "metadata": {
+        "category": "Programas Sociais do Governo Federal",
+        "description": "Benefícios e programas sociais geridos pela Caixa"
+      },
+      "fgts": {
+        "title": "FGTS - Fundo de Garantia do Tempo de Serviço",
+        "keywords": ["fgts", "fundo de garantia", "saque fgts"],
+        "content": {
+          "description": "O FGTS (Fundo de Garantia do Tempo de Serviço) é um direito do trabalhador brasileiro.",
+          "consulta": {
+            "question": "Como consultar FGTS?",
+            "answer": "Você pode consultar seu saldo pelo aplicativo FGTS, no site da Caixa (www.caixa.gov.br) ou em agências da Caixa.",
+            "channels": ["Aplicativo FGTS", "Site da Caixa", "Agências", "SMS"]
+          },
+          "saque": {
+            "question": "Quando posso sacar o FGTS?",
+            "answer": "O saque pode ser feito em casos como: demissão sem justa causa, aposentadoria, compra da casa própria, doenças graves, calamidade pública, entre outros.",
+            "modalidades": [
+              "Demissão sem justa causa",
+              "Aposentadoria",
+              "Compra de imóvel",
+              "Doenças graves",
+              "Calamidade pública",
+              "Saque-aniversário"
+            ]
+          },
+          "contato": "Central de Atendimento: 0800 726 0207"
+        }
+      },
+      "auxilio_brasil": {
+        "title": "Auxílio Brasil",
+        "keywords": ["auxílio brasil", "auxilio brasil", "bolsa família", "bolsa familia"],
+        "content": {
+          "description": "O Auxílio Brasil é o programa de transferência de renda do Governo Federal para famílias em situação de pobreza e extrema pobreza.",
+          "inscricao": {
+            "question": "Como se inscrever no Auxílio Brasil?",
+            "answer": "Para se inscrever, é necessário estar cadastrado no Cadastro Único (CadÚnico) e atender aos critérios de renda familiar per capita.",
+            "requisitos": [
+              "Estar inscrito no CadÚnico",
+              "Renda familiar per capita de até R$ 218,00",
+              "Manter dados atualizados no CadÚnico"
+            ]
+          },
+          "pagamento": {
+            "question": "Como receber o Auxílio Brasil?",
+            "answer": "O pagamento é feito pela Caixa através do Cartão Bolsa Família ou pela Conta Poupança Social Digital (Caixa Tem).",
+            "formas": ["Cartão Bolsa Família", "Caixa Tem", "Saque em agências"]
+          },
+          "calendario": "Pagamentos mensais conforme final do NIS"
+        }
+      },
+      "seguro_desemprego": {
+        "title": "Seguro-Desemprego",
+        "keywords": ["seguro desemprego", "seguro-desemprego", "desemprego"],
+        "content": {
+          "description": "Benefício temporário para trabalhadores dispensados sem justa causa.",
+          "requisitos": {
+            "question": "Quem tem direito ao Seguro-Desemprego?",
+            "answer": "Trabalhadores com carteira assinada dispensados sem justa causa que atendam aos requisitos de tempo de trabalho.",
+            "criterios": [
+              "Ter sido dispensado sem justa causa",
+              "Ter trabalhado pelo menos 12 meses nos últimos 18 meses (primeira solicitação)",
+              "Não possuir renda própria suficiente"
+            ]
+          },
+          "solicitacao": {
+            "question": "Como solicitar o Seguro-Desemprego?",
+            "answer": "Pode ser solicitado pelo aplicativo Carteira de Trabalho Digital, site gov.br ou em agências credenciadas.",
+            "canais": ["App Carteira de Trabalho Digital", "Portal gov.br", "Agências SINE"]
+          },
+          "pagamento": "O pagamento é feito pela Caixa em até 30 dias após a solicitação"
+        }
+      },
+      "pis_pasep": {
+        "title": "PIS/PASEP e Abono Salarial",
+        "keywords": ["pis", "pasep", "abono salarial"],
+        "content": {
+          "description": "Benefício anual pago aos trabalhadores que atenderam aos requisitos.",
+          "consulta": {
+            "question": "Como consultar o PIS/PASEP?",
+            "answer": "Consulte pelo aplicativo Caixa Trabalhador, site da Caixa ou pelo telefone 0800 726 0207.",
+            "valor": "Até um salário mínimo, proporcional aos meses trabalhados"
+          },
+          "requisitos": [
+            "Estar cadastrado no PIS/PASEP há pelo menos 5 anos",
+            "Ter trabalhado pelo menos 30 dias no ano-base",
+            "Ter recebido até 2 salários mínimos médios"
+          ]
+        }
+      }
+    },
+    "servicos_caixa": {
+      "metadata": {
+        "category": "Serviços da Caixa Econômica Federal",
+        "description": "Serviços bancários e digitais oferecidos pela Caixa"
+      },
+      "contas": {
+        "title": "Contas Bancárias",
+        "keywords": ["conta", "conta corrente", "poupança", "abertura de conta"],
+        "content": {
+          "tipos": {
+            "question": "Quais tipos de conta a Caixa oferece?",
+            "answer": "A Caixa oferece: Conta Corrente, Poupança, Conta Digital Caixa Tem, Conta Salário e Conta Universitária.",
+            "opcoes": [
+              {
+                "nome": "Conta Corrente",
+                "descricao": "Conta completa com cartão, cheque e todos os serviços"
+              },
+              {
+                "nome": "Poupança",
+                "descricao": "Conta para guardar dinheiro com rendimento"
+              },
+              {
+                "nome": "Caixa Tem",
+                "descricao": "Conta digital gratuita pelo aplicativo"
+              },
+              {
+                "nome": "Conta Salário",
+                "descricao": "Para recebimento de salário"
+              }
+            ]
+          },
+          "abertura": {
+            "question": "Como abrir uma conta na Caixa?",
+            "answer": "Você pode abrir uma conta indo a uma agência com RG, CPF e comprovante de residência, ou pelo aplicativo Caixa Tem (conta digital).",
+            "documentos": ["RG ou CNH", "CPF", "Comprovante de residência"],
+            "canais": ["Agências", "Aplicativo Caixa Tem"]
+          }
+        }
+      },
+      "pix": {
+        "title": "PIX",
+        "keywords": ["pix", "transferência", "pagamento instantâneo"],
+        "content": {
+          "description": "Sistema de pagamentos instantâneos do Banco Central, disponível 24/7.",
+          "como_usar": {
+            "question": "Como fazer PIX na Caixa?",
+            "answer": "Você pode fazer PIX pelo aplicativo Caixa, internet banking ou caixas eletrônicos 24h. É gratuito para pessoas físicas.",
+            "canais": ["App Caixa", "Internet Banking", "Caixas Eletrônicos"]
+          },
+          "chaves": {
+            "question": "Como cadastrar chave PIX?",
+            "answer": "Cadastre suas chaves PIX (CPF, e-mail, telefone ou chave aleatória) pelo app Caixa ou internet banking.",
+            "tipos": ["CPF", "E-mail", "Telefone", "Chave aleatória"]
+          },
+          "limites": "Limites podem ser configurados no app para maior segurança"
+        }
+      },
+      "atendimento": {
+        "title": "Canais de Atendimento",
+        "keywords": ["atendimento", "agência", "telefone", "suporte"],
+        "content": {
+          "canais": [
+            {
+              "nome": "Central de Atendimento",
+              "telefone": "4004-0104 (capitais) ou 0800 104 0104 (demais localidades)",
+              "horario": "24 horas"
+            },
+            {
+              "nome": "Agências",
+              "descricao": "Atendimento presencial",
+              "horario": "Segunda a sexta, 10h às 16h"
+            },
+            {
+              "nome": "App Caixa",
+              "descricao": "Atendimento digital 24/7"
+            },
+            {
+              "nome": "Internet Banking",
+              "url": "www.caixa.gov.br"
+            }
+          ]
+        }
+      },
+      "caixa_tem": {
+        "title": "Caixa Tem",
+        "keywords": ["caixa tem", "conta digital", "app caixa tem"],
+        "content": {
+          "description": "Aplicativo de conta digital gratuita da Caixa.",
+          "funcionalidades": [
+            "Abrir conta digital gratuita",
+            "Fazer PIX",
+            "Pagar contas",
+            "Fazer transferências",
+            "Consultar benefícios sociais",
+            "Sacar sem cartão"
+          ],
+          "download": "Disponível para Android e iOS"
+        }
+      }
+    },
+    "produtos_caixa": {
+      "metadata": {
+        "category": "Produtos da Caixa Econômica Federal",
+        "description": "Produtos financeiros oferecidos pela Caixa"
+      },
+      "credito_imobiliario": {
+        "title": "Crédito Imobiliário",
+        "keywords": ["crédito imobiliário", "financiamento imóvel", "casa verde amarela", "minha casa minha vida"],
+        "content": {
+          "description": "Financiamento para compra, construção ou reforma de imóveis.",
+          "caracteristicas": {
+            "question": "Como funciona o crédito imobiliário da Caixa?",
+            "answer": "A Caixa financia até 80% do valor do imóvel, com prazo de até 35 anos para pagar. Temos o programa Casa Verde e Amarela com condições especiais.",
+            "detalhes": [
+              "Financiamento de até 80% do valor",
+              "Prazo de até 35 anos",
+              "Taxas a partir de 4,95% ao ano + TR",
+              "Programa Casa Verde e Amarela disponível"
+            ]
+          },
+          "simulacao": {
+            "question": "Como simular um financiamento?",
+            "answer": "Você pode simular pelo site da Caixa (www.caixa.gov.br) ou pelo aplicativo Habitação Caixa.",
+            "canais": ["Site Caixa", "App Habitação Caixa", "Agências"]
+          },
+          "casa_verde_amarela": {
+            "descricao": "Programa habitacional com subsídios para famílias de baixa renda",
+            "faixas": ["Faixa 1: até R$ 2.640", "Faixa 2: até R$ 4.400", "Faixa 3: até R$ 8.000"]
+          }
+        }
+      },
+      "credito_pessoal": {
+        "title": "Crédito Pessoal e Consignado",
+        "keywords": ["empréstimo", "crédito pessoal", "consignado"],
+        "content": {
+          "modalidades": {
+            "question": "Quais tipos de empréstimo a Caixa oferece?",
+            "answer": "A Caixa oferece: Crédito Pessoal, Consignado, Penhor, Crédito com garantia de imóvel ou FGTS.",
+            "opcoes": [
+              {
+                "nome": "Consignado",
+                "descricao": "Desconto em folha de pagamento, menores taxas",
+                "publico": "Aposentados, pensionistas e servidores públicos"
+              },
+              {
+                "nome": "Crédito Pessoal",
+                "descricao": "Empréstimo sem garantia",
+                "uso": "Livre"
+              },
+              {
+                "nome": "Penhor",
+                "descricao": "Empréstimo com garantia de joias e objetos de valor"
+              },
+              {
+                "nome": "Crédito com garantia de FGTS",
+                "descricao": "Usa saldo do FGTS como garantia"
+              }
+            ]
+          },
+          "simulacao": "Simule pelo app Caixa ou site www.caixa.gov.br"
+        }
+      },
+      "cartoes": {
+        "title": "Cartões Caixa",
+        "keywords": ["cartão", "cartão de crédito", "cartão de débito"],
+        "content": {
+          "tipos": {
+            "question": "Quais cartões a Caixa oferece?",
+            "answer": "A Caixa oferece cartões de crédito e débito das bandeiras Visa, Mastercard e Elo.",
+            "opcoes": [
+              {
+                "nome": "Caixa Simples",
+                "anuidade": "Zero",
+                "bandeira": "Visa/Elo"
+              },
+              {
+                "nome": "Elo Mais",
+                "beneficios": "Programa de pontos"
+              },
+              {
+                "nome": "Mastercard Gold",
+                "beneficios": "Sala VIP, seguros"
+              }
+            ]
+          },
+          "solicitacao": "Solicite pelo app Caixa, internet banking ou agências"
+        }
+      },
+      "loterias": {
+        "title": "Loterias Caixa",
+        "keywords": ["loteria", "mega-sena", "quina", "lotofácil"],
+        "content": {
+          "modalidades": {
+            "question": "Quais loterias a Caixa oferece?",
+            "answer": "Mega-Sena, Quina, Lotofácil, Lotomania, Timemania, Dupla Sena, Dia de Sorte e Super Sete.",
+            "lista": [
+              "Mega-Sena",
+              "Quina",
+              "Lotofácil",
+              "Lotomania",
+              "Timemania",
+              "Dupla Sena",
+              "Dia de Sorte",
+              "Super Sete"
+            ]
+          },
+          "como_apostar": {
+            "question": "Como fazer apostas?",
+            "answer": "Você pode apostar em casas lotéricas, pelo aplicativo Loterias Caixa ou pelo site.",
+            "canais": ["Casas Lotéricas", "App Loterias Caixa", "Site Loterias Caixa"]
+          },
+          "resultados": "Confira resultados pelo app ou site das Loterias Caixa"
+        }
+      },
+      "investimentos": {
+        "title": "Investimentos e Poupança",
+        "keywords": ["poupança", "investimento", "aplicação"],
+        "content": {
+          "poupanca": {
+            "question": "Como funciona a poupança da Caixa?",
+            "answer": "A poupança rende mensalmente e é isenta de imposto de renda para pessoa física.",
+            "rendimento": "TR + 0,5% ao mês ou 70% da Selic (quando Selic ≤ 8,5% ao ano)"
+          },
+          "outros": {
+            "opcoes": [
+              "Títulos de Capitalização",
+              "Previdência Privada CAIXA",
+              "Fundos de Investimento"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "out_of_scope_response": {
+    "default": "Agradeço sua pergunta, mas meu foco é auxiliar especificamente com informações sobre Programas Sociais do Governo Federal e serviços e produtos da Caixa Econômica Federal. Posso ajudar com questões sobre contas, FGTS, benefícios sociais, crédito, financiamentos, cartões ou loterias. Como posso te ajudar dentro desses temas?"
+  },
+  "greetings": {
+    "initial": "Olá! Eu sou a SocIA, sua assistente virtual especializada em Programas Sociais do Governo e todos os serviços e produtos da Caixa Econômica Federal. Como posso te ajudar hoje?",
+    "return": "Olá! Fico feliz em conversar com você. Estou aqui para ajudar com informações sobre Programas Sociais do Governo e todos os serviços da Caixa. O que você gostaria de saber?"
+  }
+}
